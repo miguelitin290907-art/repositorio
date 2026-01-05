@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Miguel Alejandro — Portafolio Avanzado</title>
+    <meta name="description" content="Portafolio avanzado de Miguel Alejandro — Desarrollador Web. HTML, CSS, JavaScript. Tema día/noche y panel de bienvenida animado.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="main.js"></script>
+</head>
+
+<body>
+    <!-- Canvas de fondo para partículas/efectos -->
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+    <!-- Panel de bienvenida (overlay) -->
+    <div id="welcomePanel" class="welcome-panel" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+        <div class="welcome-content">
+            <div class="welcome-visual" aria-hidden="true">
+                <!-- SVG animado - globo/shape -->
+                <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" class="welcome-svg">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#7c5cff"/>
+              <stop offset="100%" stop-color="#00d4ff"/>
+            </linearGradient>
+          </defs>
+          <g class="float">
+            <path d="M150 50 C 220 10, 380 10, 450 50 C 520 90, 520 190, 450 230 C 380 270, 220 270, 150 230 C 80 190, 80 90, 150 50 Z"
+                  fill="url(#g1)" opacity="0.95">
+              <animate attributeName="d" dur="6s" repeatCount="indefinite"
+                values="M150 50 C 220 10, 380 10, 450 50 C 520 90, 520 190, 450 230 C 380 270, 220 270, 150 230 C 80 190, 80 90, 150 50 Z;
+                        M150 30 C 230 0, 370 20, 460 60 C 520 100, 520 200, 460 260 C 370 300, 230 280, 150 240 C 70 200, 70 100, 150 30 Z;
+                        M150 50 C 220 10, 380 10, 450 50 C 520 90, 520 190, 450 230 C 380 270, 220 270, 150 230 C 80 190, 80 90, 150 50 Z"/>
+            </path>
+          </g>
+        </svg>
+            </div>
+
+            <div class="welcome-text">
+                <h1 id="welcomeTitle">Bienvenido — Soy <span class="name">Miguel Alejandro</span></h1>
+                <p class="typed-line" id="typedLine" aria-live="polite"></p>
+                <div class="welcome-cta">
+                    <button id="enterBtn" class="btn primary">Entrar al sitio</button>
+                    <button id="skipBtn" class="btn ghost">Ver luego</button>
+                </div>
+                <div class="welcome-meta">
+                    <small>Estudiante de Ingeniería Informática — Desarrollador Web</small>
+                </div>
+                <div class="theme-switch">
+                    <label class="switch">
+            <input id="themeToggleWelcome" type="checkbox" aria-label="Cambiar tema día/noche">
+            <span class="slider"></span>
+          </label>
+                    <span class="theme-label">Día / Noche</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra superior -->
+    <header class="site-header">
+        <nav class="nav container" aria-label="Navegación principal">
+            <a class="brand" href="#home">Miguel Alejandro</a>
+            <div class="nav-actions">
+                <button id="themeToggle" class="icon-btn" aria-label="Alternar tema">🌙</button>
+                <button id="menuToggle" class="icon-btn" aria-label="Abrir menú">☰</button>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="home">
+        <!-- Hero avanzado -->
+        <section class="hero container">
+            <div class="hero-left">
+                <h2 class="eyebrow">Hola, soy</h2>
+                <h1 class="big">Miguel Alejandro</h1>
+                <p class="lead">Estudiante de Ingeniería Informática — Desarrollador Web. Me especializo en HTML, CSS y JavaScript. Busco proyectos desde pequeños hasta grandes.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#contact">Contrátame</a>
+                    <a class="btn ghost" href="#projects">Mis proyectos</a>
+                </div>
+
+                <ul class="contact-inline">
+                    <li>📞 <a href="tel:+53561317">53561317</a></li>
+                    <li>✉️ <a href="mailto:Miguelitin290907@gmail.com">Miguelitin290907@gmail.com</a></li>
+                </ul>
+            </div>
+
+            <div class="hero-right" aria-hidden="true">
+                <div class="stat-card">
+                    <div class="avatar">MA</div>
+                    <div>
+                        <h3>Miguel Alejandro</h3>
+                        <p class="muted">Ingeniería Informática</p>
+                        <div class="pills">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-preview">
+                    <div class="skillbar">
+                        <label>HTML</label>
+                        <div class="bar"><span style="width:95%"></span></div>
+                    </div>
+                    <div class="skillbar">
+                        <label>CSS</label>
+                        <div class="bar"><span style="width:90%"></span></div>
+                    </div>
+                    <div class="skillbar">
+                        <label>JavaScript</label>
+                        <div class="bar"><span style="width:85%"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section class="about container" id="about">
+            <h2>Sobre mí</h2>
+            <p>Soy estudiante de Ingeniería Informática en la universidad y me apasiona el desarrollo web. Me enfoco en interfaces accesibles, responsivas y con buen rendimiento. Ofrezco servicios desde prototipos hasta aplicaciones completas.</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Educación</h3>
+                    <p>Estudiante de Ingeniería Informática — Universidad</p>
+                </div>
+                <div class="about-card">
+                    <h3>Disponibilidad</h3>
+                    <p>Acepto proyectos freelance y ofertas de trabajo. Flexible en alcance y tecnología.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Contacto</h3>
+                    <p>Tel: <a href="tel:+53561317">53561317</a><br>Email: <a href="mailto:Miguelitin290907@gmail.com">Miguelitin290907@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habilidades -->
+        <section class="skills container" id="skills">
+            <h2>Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <h4>HTML</h4>
+                    <p>Semántica, SEO básico, accesibilidad (a11y).</p>
+                </div>
+                <div class="skill">
+                    <h4>CSS</h4>
+                    <p>Responsive, Grid, Flexbox, animaciones y diseño moderno.</p>
+                </div>
+                <div class="skill">
+                    <h4>JavaScript</h4>
+                    <p>ES6+, DOM, Fetch, SPA ligera y buenas prácticas.</p>
+                </div>
+                <div class="skill">
+                    <h4>Herramientas</h4>
+                    <p>Git, VSCode, Chrome DevTools, despliegue (GitHub Pages / Netlify).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyectos -->
+        <section class="projects container" id="projects" aria-labelledby="projectsTitle">
+            <div class="projects-header">
+                <h2 id="projectsTitle">Proyectos</h2>
+                <div class="projects-controls">
+                    <input id="searchProject" type="search" placeholder="Buscar proyecto...">
+                    <select id="filterTag" aria-label="Filtrar por etiqueta">
+            <option value="">Todos</option>
+          </select>
+                </div>
+            </div>
+
+            <div id="projectsGrid" class="projects-grid" role="list">
+                <!-- Renderizado por JS -->
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="contact container" id="contact">
+            <h2>Contacto</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Envíame un mensaje</h3>
+                    <form id="contactForm" novalidate>
+                        <label for="name">Nombre</label>
+                        <input id="name" name="name" type="text" required>
+
+                        <label for="email">Correo</label>
+                        <input id="email" name="email" type="email" required>
+
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn primary">Enviar</button>
+                            <a class="btn ghost" href="mailto:Miguelitin290907@gmail.com">Enviar por correo</a>
+                        </div>
+                        <p id="formStatus" class="muted" aria-live="polite"></p>
+                    </form>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Información</h3>
+                    <p>Teléfono: <a href="tel:+53561317">53561317</a></p>
+                    <p>Email: <a href="mailto:Miguelitin290907@gmail.com">Miguelitin290907@gmail.com</a></p>
+                    <p>Disponible para proyectos freelance y empleo.</p>
+                    <a class="btn" href="#" download="MiguelAlejandro_CV.pdf">Descargar CV (próximamente)</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="year"></span> Miguel Alejandro — Desarrollo Web • HTML • CSS • JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- Modal de proyecto -->
+    <div id="projectModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button id="modalClose" class="modal-close" aria-label="Cerrar">✕</button>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+            <div id="modalTags" class="modal-tags"></div>
+            <div class="modal-actions">
+                <a id="modalLive" class="btn primary" target="_blank" rel="noopener">Ver demo</a>
+                <a id="modalRepo" class="btn ghost" target="_blank" rel="noopener">Ver código</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
